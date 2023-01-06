@@ -1,9 +1,15 @@
-import { useFrame } from '@react-three/fiber'
+import { extend, useFrame, useThree } from '@react-three/fiber'
 import { useRef } from 'react'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+
+extend({ OrbitControls })
 
 export default function App() {
     const torusKnot = useRef(null)
     const shapesGroup = useRef(null)
+
+    // const three = useThree()
+    const { camera, gl } = useThree()
 
     useFrame((state, delta) => {
         torusKnot.current.rotation.y += delta
@@ -13,23 +19,29 @@ export default function App() {
 
     return (
         <>
+            <orbitControls args={[ camera, gl.domElement ]} />
+
+            <directionalLight position={[ 1, 2, 3 ]}/>
+
+            <ambientLight intensity={.35} />
+
             <group ref={shapesGroup}>
 
                 <mesh position={ [2, .75, 0] } ref={torusKnot} >
                     <torusKnotGeometry />
-                    <meshNormalMaterial />
+                    <meshStandardMaterial color={0xffdd00} />
                 </mesh>
 
                 <mesh position-x={-2}>
                     <sphereGeometry />
-                    <meshBasicMaterial color={0xff1200} />
+                    <meshStandardMaterial color={0xff1200} />
                 </mesh>
 
             </group>
 
             <mesh position={ [ 0, -1, 0 ] } rotation-x={ Math.PI * -.45 } scale={7} >
                 <planeGeometry />
-                <meshBasicMaterial color={0xfa90fc} />
+                <meshStandardMaterial color={0xfa90fc} />
             </mesh>
 
         </>
