@@ -4,8 +4,6 @@ export default function CustomObj() {
 
     const geoRef = useRef(null)
 
-    useEffect(() => geoRef.current.computeVertexNormals())
-
     const verticesCount = 10 * 3 // 10 triangles, 3 vertices per triangle
     
     const positions = useMemo(() => {
@@ -14,9 +12,11 @@ export default function CustomObj() {
         for(let i = 0; i < verticesCount * 3; i++) {
             positions[i] = (Math.random() - .5) * 3
         }
-
+        
         return positions
     }, [])
+
+    useEffect(() => geoRef.current.computeVertexNormals(), [])
 
     return (
         <mesh>
