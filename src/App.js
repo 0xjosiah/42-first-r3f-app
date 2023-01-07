@@ -17,15 +17,15 @@ export default function App() {
         torusKnot.current.rotation.x += delta
         // shapesGroup.current.rotation.y += delta
 
-        const angle = state.clock.elapsedTime
-        state.camera.position.x = Math.sin(angle) * 8
-        state.camera.position.z = Math.cos(angle) * 8
-        state.camera.lookAt(0,0,0)
+        // const angle = state.clock.elapsedTime
+        // state.camera.position.x = Math.sin(angle) * 8
+        // state.camera.position.z = Math.cos(angle) * 8
+        // state.camera.lookAt(0,0,0)
     }) // this hook gives access to renderer frames, delta allows for frame rate consistency
 
     return (
         <>
-            {/* <orbitControls args={[ camera, gl.domElement ]} /> */}
+            <orbitControls args={[ camera, gl.domElement ]} />
 
             <directionalLight position={[ 1, 2, 3 ]}/>
 
