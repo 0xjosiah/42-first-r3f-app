@@ -8,6 +8,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 root.render(
     <Canvas
+        // dpr={ [ 1, 2 ] } // pixel ratio setting, 1 number fixes ratio, array clamps with arr[0] - low, arr[1] - high, [1,2] is default
         // orthographic
         // flat // this refers to tone mapping
         gl={{
