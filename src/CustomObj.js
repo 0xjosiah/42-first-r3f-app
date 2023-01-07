@@ -1,12 +1,19 @@
+import { useMemo } from 'react'
 import * as THREE from 'three'
 export default function CustomObj() {
 
+    
     const verticesCount = 10 * 3 // 10 triangles, 3 vertices per triangle
-    const positions = new Float32Array(verticesCount * 3) // 3 coords per vertex
+    
+    const positions = useMemo(() => {
+        const positions = new Float32Array(verticesCount * 3) // 3 coords per vertex
+        
+        for(let i = 0; i < verticesCount * 3; i++) {
+            positions[i] = (Math.random() - .5) * 3
+        }
 
-    for(let i = 0; i < verticesCount * 3; i++) {
-        positions[i] = (Math.random() - .5) * 3
-    }
+        return positions
+    }, [])
 
     return (
         <mesh>
