@@ -13,7 +13,7 @@ root.render(
             // zoom: 100,
             near: 0.1,
             far: 200,
-            position: [ 4, 5, 2]
+            position: [ 2, 2, 7 ]
         }}
     >
         <App />
