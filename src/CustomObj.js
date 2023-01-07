@@ -1,5 +1,8 @@
 export default function CustomObj() {
     return (
-        null
+        <mesh>
+            <boxGeometry />
+            <meshBasicMaterial />
+        </mesh>
     )
 }
